@@ -1,7 +1,6 @@
 import { Button, Layout } from "antd";
 import { Content, Footer, Header } from "antd/lib/layout/layout";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 function CreateProfile() {
   const [alias, setAlias] = useState("");
@@ -9,8 +8,6 @@ function CreateProfile() {
   const [make, setMake] = useState("");
   const [model, setModel] = useState("");
   const [mileage, setMileage] = useState(0);
-
-  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     const newUser = { alias, year, make, model, mileage };
@@ -21,17 +18,13 @@ function CreateProfile() {
       },
       body: JSON.stringify(newUser),
     })
-      .then((res) => res.json())
-      .then((user) => console.log(user))
+      .then((res) => res.text())
+      // .then((text) => console.log(text))
       .catch(console.error);
   };
 
   return (
-    <Layout>
-      <Header>
-        <Button>Home</Button>
-        <Button>Logout</Button>
-      </Header>
+    <>
       <Content style={{ padding: "0 50px", textAlign: "center" }}>
         <form onSubmit={handleSubmit}>
           <h3>Car Alias</h3>
@@ -75,8 +68,7 @@ function CreateProfile() {
         </form>
       </Content>
       <br />
-      <Footer style={{ textAlign: "center" }}>Cardeets! ©2022</Footer>
-    </Layout>
+    </>
   );
 }
 

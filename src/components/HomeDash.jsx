@@ -1,4 +1,3 @@
-import { Button } from "antd";
 import Layout, { Content, Footer, Header } from "antd/lib/layout/layout";
 import React from "react";
 import { useState, useEffect } from "react";
@@ -18,28 +17,38 @@ function HomeDash() {
         setRecord(data);
       })
       .catch(console.error);
-  }, []);
+  }, [mpg]);
 
-  function handleClick(e) {
-    e.preventDefault();
+  function displayMileage() {
+    let testfn = setMPG(
+      Math.floor((diffMileage - record[0].mileage) / gallons)
+    );
+    return testfn;
   }
 
-  // function setMPG() {
-  //   let avg = diffMileage - record[0].mileage;
-  //   avg /= gallons;
-  //   return avg;
-  // }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const newMileage = { diffMileage, gallons, mpg };
+    const id = record[0]._id;
+    fetch(`http://localhost:3000/diary/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newMileage),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .catch(console.error);
+  };
 
   return (
-    <div onClick={handleClick}>
+    <div>
       <Layout className="layout">
-        <Content
-          style={{
-            padding: "0 50px",
-          }}
-        >
+        <Content>
           <section>
             <h2>
+              Your car's name:
               {record?.map((record) => {
                 return <p key={record._id}>{record.alias}</p>;
               })}
@@ -55,34 +64,25 @@ function HomeDash() {
             <h3>{mpg}</h3>
           </section>
 
-          <form>
+          <form onSubmit={handleSubmit}>
             <br />
             <input
               placeholder="current mileage"
-              onChange={(e) => setDiffMileage(e.target.value)}
+              onChange={(e) => setDiffMileage(Number(e.target.value))}
             ></input>
             <input
               placeholder="gallons added"
-              onChange={(e) => setGallons(e.target.value)}
+              onChange={(e) => setGallons(Number(e.target.value))}
             ></input>
             <br />
-            <button
-              onClick={() =>
-                setMPG((diffMileage - record[0].mileage) / gallons)
-              }
-            >
+            <button type="button" onClick={displayMileage}>
               Calculate
+            </button>
+            <button type="button" onClick={handleSubmit}>
+              Send
             </button>
           </form>
         </Content>
-
-        <Footer
-          style={{
-            textAlign: "center",
-          }}
-        >
-          Gasdeets! ©2022
-        </Footer>
       </Layout>
     </div>
   );

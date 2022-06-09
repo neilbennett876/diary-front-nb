@@ -1,42 +1,45 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
 
-function Add() {
-  const [mileage, setMileage] = useState();
-  const [gallons, setGallons] = useState();
+// function Add() {
+//   const [diffMileage, setDiffMileage] = useState();
+//   const [gallons, setGallons] = useState(0);
+//   const [mpg, setMPG] = useState();
 
-  const handleSubmit = () => {
-    const update = { mileage, gallons };
-    fetch("http://localhost:3000/diary", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(update),
-    })
-      .then((res) => res.json())
-      .then((user) => console.log(user))
-      .catch(console.error);
-  };
+//   const handleSubmit = () => {
+//     const update = { mileage, gallons };
+//     fetch("http://localhost:3000/diary", {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify(update),
+//     })
+//       .then((res) => res.json())
+//       .then((user) => console.log(user))
+//       .catch(console.error);
+//   };
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="number"
-        placeholder="miles"
-        value={mileage}
-        onChange={(e) => setMileage(e.target.value)}
-      />
-      <br />
-      <input
-        type="number"
-        placeholder="gallons"
-        value={gallons}
-        onChange={(e) => setGallons(e.target.value)}
-      />
-      <br />
-      <button type="submit">Add mileage!</button>
-    </form>
-  );
-}
+//   return (
+//     <form>
+//       <br />
+//       <input
+//         placeholder="current mileage"
+//         onChange={(e) => setDiffMileage(e.target.value)}
+//       ></input>
+//       <input
+//         placeholder="gallons added"
+//         onChange={(e) => setGallons(e.target.value)}
+//       ></input>
+//       <br />
+//       <button
+//         type="submit"
+//         onClick={() => setMPG((diffMileage - record[0].mileage) / gallons)}
+//       >
+//         Calculate
+//       </button>
+//       <button>Add record!</button>
+//     </form>
+//   );
+// }
 
-export default Add;
+// export default Add;
