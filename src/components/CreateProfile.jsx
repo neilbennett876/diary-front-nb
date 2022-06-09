@@ -1,3 +1,5 @@
+import { Button, Layout } from "antd";
+import { Content, Footer, Header } from "antd/lib/layout/layout";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -12,7 +14,7 @@ function CreateProfile() {
 
   const handleSubmit = (e) => {
     const newUser = { alias, year, make, model, mileage };
-    fetch("http://localhost:3000", {
+    fetch("http://localhost:3000/diary", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -25,48 +27,56 @@ function CreateProfile() {
   };
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <h3>Car Alias</h3>
-        <input
-          placeholder="alias"
-          value={alias}
-          onChange={(e) => setAlias(e.target.value)}
-        />
-        <br />
-        <h3>Year</h3>
-        <input
-          placeholder="year"
-          value={year}
-          onChange={(e) => setYear(e.target.value)}
-        />
-        <br />
-        <h3>Make</h3>
-        <input
-          placeholder="make"
-          value={make}
-          onChange={(e) => setMake(e.target.value)}
-        />
-        <br />
-        <h3>Model</h3>
-        <input
-          placeholder="model"
-          value={model}
-          onChange={(e) => setModel(e.target.value)}
-        />
-        <br />
-        <h3>Mileage</h3>
-        <input
-          type="number"
-          placeholder="mileage"
-          value={mileage}
-          onChange={(e) => setMileage(e.target.value)}
-        />
-        <br />
-        <br />
-        <button type="submit">Create user</button>
-      </form>
-    </>
+    <Layout>
+      <Header>
+        <Button>Home</Button>
+        <Button>Logout</Button>
+      </Header>
+      <Content style={{ padding: "0 50px", textAlign: "center" }}>
+        <form onSubmit={handleSubmit}>
+          <h3>Car Alias</h3>
+          <input
+            placeholder="alias"
+            value={alias}
+            onChange={(e) => setAlias(e.target.value)}
+          />
+          <br />
+          <h3>Year</h3>
+          <input
+            placeholder="year"
+            value={year}
+            onChange={(e) => setYear(e.target.value)}
+          />
+          <br />
+          <h3>Make</h3>
+          <input
+            placeholder="make"
+            value={make}
+            onChange={(e) => setMake(e.target.value)}
+          />
+          <br />
+          <h3>Model</h3>
+          <input
+            placeholder="model"
+            value={model}
+            onChange={(e) => setModel(e.target.value)}
+          />
+          <br />
+          <h3>Mileage</h3>
+          <input
+            type="number"
+            placeholder="mileage"
+            value={mileage}
+            onChange={(e) => setMileage(e.target.value)}
+          />
+          <br />
+          <br />
+          <button>Create user</button>
+        </form>
+      </Content>
+      <br />
+      <Footer style={{ textAlign: "center" }}>Cardeets! ©2022</Footer>
+    </Layout>
   );
 }
 
