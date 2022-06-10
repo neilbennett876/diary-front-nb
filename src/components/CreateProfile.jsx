@@ -19,7 +19,7 @@ function CreateProfile() {
       body: JSON.stringify(newUser),
     })
       .then((res) => res.text())
-      // .then((text) => console.log(text))
+      .then((text) => console.log(text))
       .catch(console.error);
   };
 

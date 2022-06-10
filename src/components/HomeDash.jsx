@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 function HomeDash() {
   const [record, setRecord] = useState();
-  const [diffMileage, setDiffMileage] = useState();
+  const [mileage, setMileage] = useState();
   const [gallons, setGallons] = useState(0);
   const [mpg, setMPG] = useState();
   const navigate = useNavigate();
@@ -17,20 +17,18 @@ function HomeDash() {
         setRecord(data);
       })
       .catch(console.error);
-  }, [mpg]);
+  }, [mpg, mileage]);
 
   function displayMileage() {
-    let testfn = setMPG(
-      Math.floor((diffMileage - record[0].mileage) / gallons)
-    );
+    let testfn = setMPG(((mileage - record[0].mileage) / gallons).toFixed(2));
     return testfn;
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newMileage = { diffMileage, gallons, mpg };
+    const newMileage = { mileage, gallons, mpg };
     const id = record[0]._id;
-    fetch(`http://localhost:3000/diary/${id}`, {
+    fetch(`http://localhost:3000/diary/patch/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -54,21 +52,21 @@ function HomeDash() {
               })}
             </h2>
             <h2>
-              Your current mileage
+              Your previous mileage:
               {record?.map((record) => {
                 return <p key={record._id}>{record.mileage}</p>;
               })}
             </h2>
 
             <h2>Your mileage calculation goes here:</h2>
-            <h3>{mpg}</h3>
+            <h3>{mpg} mpg</h3>
           </section>
 
           <form onSubmit={handleSubmit}>
             <br />
             <input
               placeholder="current mileage"
-              onChange={(e) => setDiffMileage(Number(e.target.value))}
+              onChange={(e) => setMileage(Number(e.target.value))}
             ></input>
             <input
               placeholder="gallons added"
