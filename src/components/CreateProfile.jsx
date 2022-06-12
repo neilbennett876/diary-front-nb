@@ -1,4 +1,3 @@
-import { Button, Layout } from "antd";
 import { Content, Footer, Header } from "antd/lib/layout/layout";
 import React, { useState } from "react";
 
@@ -11,15 +10,15 @@ function CreateProfile() {
 
   const handleSubmit = (e) => {
     const newUser = { alias, year, make, model, mileage };
-    fetch("http://localhost:3000/diary", {
+    fetch("https://cardeets-backend-nb.web.app/diary", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(newUser),
     })
-      .then((res) => res.text())
-      .then((text) => console.log(text))
+      .then((res) => res.json())
+      .then((data) => console.log(data))
       .catch(console.error);
   };
 
