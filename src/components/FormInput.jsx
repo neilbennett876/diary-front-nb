@@ -2,9 +2,9 @@ import { useContext, useState } from "react";
 import { FormInputContext } from "./context/Context";
 
 function FormInput({ record }) {
-  const { mileage, setMileage } = useContext(FormInputContext);
-  const { gallons, setGallons } = useContext(FormInputContext);
-  const { mpg, setMPG } = useContext(FormInputContext);
+  const { mileage, setMileage, gallons, setGallons, mpg, setMPG } =
+    useContext(FormInputContext);
+  // const { mpg, setMPG } = useContext(FormInputContext);
 
   function displayMileage() {
     let testfn = setMPG(((mileage - record[0].mileage) / gallons).toFixed(2));
@@ -24,13 +24,19 @@ function FormInput({ record }) {
     })
       .then((res) => res.json())
       .then((data) => console.log(data))
-      .catch(console.error);
+      .catch(console.error)
+      .then(() => {
+        window.location.reload(false);
+      });
   };
 
   return (
     <div>
-      <h2>Your mileage calculation goes here:</h2>
-      <h3>{mpg} mpg</h3>
+      {!mpg ? (
+        <p>Enter your mileage! </p>
+      ) : (
+        <h2>You got {mpg} mpg from your last tank of gas!</h2>
+      )}
       <form onSubmit={handleSubmit}>
         <br />
         <input

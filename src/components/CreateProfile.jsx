@@ -1,4 +1,4 @@
-import { Card } from "antd";
+import { Card, Button, Checkbox, Form, Input } from "antd";
 import { Content, Footer, Header } from "antd/lib/layout/layout";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -14,7 +14,7 @@ function CreateProfile() {
 
   const handleSubmit = (e) => {
     const newUser = { alias, year, make, model, mileage };
-    fetch("https://cardeets-back-firestore.web.app/diary", {
+    fetch("https://cardeets-back-firestore.web.app/diary/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -68,7 +68,7 @@ function CreateProfile() {
             />
             <br />
             <br />
-            <button>Create user</button>
+            <button type="submit">Create user</button>
           </form>
         </Card>
       </Content>

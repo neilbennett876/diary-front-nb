@@ -1,21 +1,19 @@
 .App {
   text-align: center;
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(237, 206, 121);
 }
 
 .site-layout-content {
   min-height: 280px;
   padding: 24px;
-  background: rgb(205, 133, 63);
 }
 
-/* body {
+body {
   height: fit-content;
-  background: url(./components/assets/1482025235-huge.jpg) no-repeat center
-    fixed;
   background-size: cover;
   text-align: center;
-} */
+  background-color: rgb(237, 206, 121);
+}
 
 .footer {
   position: absolute;
@@ -25,5 +23,9 @@
 }
 
 .card {
-  background-color: #d5bd0e;
+  width: 300px;
+  background: #ececec;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0.8;
 }

@@ -1,8 +1,6 @@
 import { Card } from "antd";
+import React, { useContext, useState, useEffect } from "react";
 import { FormItemInputContext } from "antd/lib/form/context";
-import Layout, { Content, Footer, Header } from "antd/lib/layout/layout";
-import React, { useContext, useState } from "react";
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import FormInput from "./FormInput";
 
@@ -22,27 +20,25 @@ function HomeDash() {
 
   return (
     <div>
-      <Layout className="layout">
-        <Content>
-          <Card className="card">
-            <section>
-              <h2>
-                Your car's name:
-                {record?.map((record) => {
-                  return <p key={record.id}>{record.alias}</p>;
-                })}
-              </h2>
-              <h2>
-                Your previous mileage:
-                {record?.map((record) => {
-                  return <p key={record.id}>{record.mileage}</p>;
-                })}
-              </h2>
-            </section>
-            <FormInput record={record} setRecord={setRecord} />
-          </Card>
-        </Content>
-      </Layout>
+      <Card className="card">
+        <section>
+          <h2>
+            Your car's name:
+            {record?.map((record) => {
+              return <p key={record.id}>{record.alias}</p>;
+            })}
+          </h2>
+          <h2>
+            Your previous mileage:
+            {record?.map((record) => {
+              return <p key={record.id}>{record.mileage}</p>;
+            })}
+          </h2>
+        </section>
+      </Card>
+      <Card className="card">
+        <FormInput record={record} setRecord={setRecord} />
+      </Card>
     </div>
   );
 }

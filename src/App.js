@@ -5,34 +5,18 @@ import { Route, Routes } from "react-router-dom";
 import { Layout } from "antd";
 import { Content, Footer, Header } from "antd/lib/layout/layout";
 import { FormInputContextProvider } from "./components/context/Context";
+import SignUp from "./components/CreateProfile";
 
 function App() {
   return (
     <FormInputContextProvider>
       <Layout>
-        <Content
-        // className="content"
-        // style={{
-        //   textAlign: "center",
-        //   backgroundColor: "wheat",
-        //   height: "640px",
-        // }}
-        >
+        <Content>
           <Routes>
             <Route path="/" element={<HomeDash />} />
             <Route path="/create" element={<CreateProfile />} />
           </Routes>
-          <Footer
-            className="footer"
-            // style={{
-            //   position: "absolute",
-            //   bottom: 0,
-            //   width: "100%",
-            //   height: "26px",
-            // }}
-          >
-            Cardeets! ©2022
-          </Footer>
+          <Footer className="footer">Cardeets! ©2022</Footer>
         </Content>
       </Layout>
     </FormInputContextProvider>
