@@ -14,8 +14,8 @@ function FormInput({ record }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const newMileage = { mileage, gallons, mpg };
-    const id = record[0]._id;
-    fetch(`https://cardeets-backend-nb.web.app/diary/${id}`, {
+    const id = record[0].id;
+    fetch(`https://cardeets-back-firestore.web.app/diary/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
