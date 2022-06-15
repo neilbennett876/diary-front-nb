@@ -10,7 +10,7 @@ function HomeDash() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("https://cardeets-back-firestore.web.app/diary")
+    fetch("http://localhost:3030/diary")
       .then((response) => response.json())
       .then((data) => {
         setRecord(data);
@@ -25,13 +25,13 @@ function HomeDash() {
           <h2>
             Your car's name:
             {record?.map((record) => {
-              return <p key={record.id}>{record.alias}</p>;
+              return <p key={record._id}>{record.alias}</p>;
             })}
           </h2>
           <h2>
             Your previous mileage:
             {record?.map((record) => {
-              return <p key={record.id}>{record.mileage}</p>;
+              return <p key={record._id}>{record.mileage}</p>;
             })}
           </h2>
         </section>

@@ -2,8 +2,16 @@ import { useContext, useState } from "react";
 import { FormInputContext } from "./context/Context";
 
 function FormInput({ record }) {
-  const { mileage, setMileage, gallons, setGallons, mpg, setMPG } =
-    useContext(FormInputContext);
+  const {
+    mileage,
+    setMileage,
+    gallons,
+    setGallons,
+    mpg,
+    setMPG,
+    setNotes,
+    notes,
+  } = useContext(FormInputContext);
   // const { mpg, setMPG } = useContext(FormInputContext);
 
   function displayMileage() {
@@ -13,9 +21,9 @@ function FormInput({ record }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newMileage = { mileage, gallons, mpg };
-    const id = record[0].id;
-    fetch(`https://cardeets-back-firestore.web.app/diary/${id}`, {
+    const newMileage = { mileage, gallons, mpg, notes };
+    const id = record[0]._id;
+    fetch(`http://localhost:3030/diary/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -40,13 +48,20 @@ function FormInput({ record }) {
       <form onSubmit={handleSubmit}>
         <br />
         <input
-          placeholder="current mileage"
+          placeholder="Current Mileage"
+          in
           onChange={(e) => setMileage(Number(e.target.value))}
         ></input>
+        <br />
         <input
-          placeholder="gallons added"
+          placeholder="Gallons Added"
           onChange={(e) => setGallons(Number(e.target.value))}
         ></input>
+        <br />
+        <textarea
+          placeholder="Notes"
+          onChange={(e) => setNotes(e.target.value)}
+        ></textarea>
         <br />
         <button type="button" onClick={displayMileage}>
           Calculate

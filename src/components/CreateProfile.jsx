@@ -14,7 +14,7 @@ function CreateProfile() {
 
   const handleSubmit = (e) => {
     const newUser = { alias, year, make, model, mileage };
-    fetch("https://cardeets-back-firestore.web.app/diary/", {
+    fetch("http://localhost:3030/diary", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
