@@ -13,7 +13,6 @@ function FormInput({ record }) {
     setNotes,
     notes,
   } = useContext(FormInputContext);
-  // const { mpg, setMPG } = useContext(FormInputContext);
 
   const [size, setSize] = useState("large");
 

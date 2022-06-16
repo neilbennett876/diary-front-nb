@@ -6,7 +6,7 @@ import FormInput from "./FormInput";
 
 function HomeDash() {
   const [record, setRecord] = useState();
-  const { mpg, mileage } = useContext(FormItemInputContext);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -14,8 +14,10 @@ function HomeDash() {
       .then((response) => response.json())
       .then((data) => {
         setRecord(data);
+        return;
       })
       .catch(console.error);
+    return;
   }, []);
 
   return (

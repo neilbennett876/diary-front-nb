@@ -7,6 +7,7 @@ import { Layout } from "antd";
 import "antd/dist/antd.css";
 import { Content, Footer } from "antd/lib/layout/layout";
 import { FormInputContextProvider } from "./components/context/Context";
+import Diary from "./components/Diary.jsx";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomeDash />} />
             <Route path="/create" element={<CreateProfile />} />
+            <Route path="/diary" element={<Diary />} />
           </Routes>
           <Footer className="footer">Cardeets! ©2022</Footer>
         </Content>
