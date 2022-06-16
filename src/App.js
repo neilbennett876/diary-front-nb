@@ -1,11 +1,12 @@
 import "./App.css";
 import CreateProfile from "./components/CreateProfile";
+import Header from "./components/Header";
 import HomeDash from "./components/HomeDash";
 import { Route, Routes } from "react-router-dom";
 import { Layout } from "antd";
-import { Content, Footer, Header } from "antd/lib/layout/layout";
+import "antd/dist/antd.css";
+import { Content, Footer } from "antd/lib/layout/layout";
 import { FormInputContextProvider } from "./components/context/Context";
-import SignUp from "./components/CreateProfile";
 
 function App() {
   return (

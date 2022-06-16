@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { FormInputContext } from "./context/Context";
+import { Button } from "antd";
 
 function FormInput({ record }) {
   const {
@@ -14,6 +15,8 @@ function FormInput({ record }) {
   } = useContext(FormInputContext);
   // const { mpg, setMPG } = useContext(FormInputContext);
 
+  const [size, setSize] = useState("large");
+
   function displayMileage() {
     let testfn = setMPG(((mileage - record[0].mileage) / gallons).toFixed(2));
     return testfn;
@@ -23,7 +26,7 @@ function FormInput({ record }) {
     e.preventDefault();
     const newMileage = { mileage, gallons, mpg, notes };
     const id = record[0]._id;
-    fetch(`http://localhost:3030/diary/${id}`, {
+    fetch(`https://cardeets-backend-nb.web.app/diary/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -59,13 +62,15 @@ function FormInput({ record }) {
         ></input>
         <br />
         <textarea
+          id="text-area"
           placeholder="Notes"
           onChange={(e) => setNotes(e.target.value)}
         ></textarea>
         <br />
-        <button type="button" onClick={displayMileage}>
+        <button id="calculate-button" type="button" onClick={displayMileage}>
           Calculate
         </button>
+        <br />
         <button type="button" onClick={handleSubmit}>
           Send
         </button>

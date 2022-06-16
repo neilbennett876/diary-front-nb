@@ -10,7 +10,7 @@ function HomeDash() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:3030/diary")
+    fetch("https://cardeets-backend-nb.web.app/diary")
       .then((response) => response.json())
       .then((data) => {
         setRecord(data);
@@ -19,26 +19,28 @@ function HomeDash() {
   }, []);
 
   return (
-    <div>
-      <Card className="card">
-        <section>
-          <h2>
-            Your car's name:
-            {record?.map((record) => {
-              return <p key={record._id}>{record.alias}</p>;
-            })}
-          </h2>
-          <h2>
-            Your previous mileage:
-            {record?.map((record) => {
-              return <p key={record._id}>{record.mileage}</p>;
-            })}
-          </h2>
-        </section>
-      </Card>
-      <Card className="card">
-        <FormInput record={record} setRecord={setRecord} />
-      </Card>
+    <div id="cardContainer">
+      <section id="section-container">
+        <Card id="cardContainer" className="card">
+          <section id="cardContainer">
+            <h2>
+              Your car's name:
+              {record?.map((record) => {
+                return <p key={record._id}>{record.alias}</p>;
+              })}
+            </h2>
+            <h2>
+              Your previous mileage:
+              {record?.map((record) => {
+                return <p key={record._id}>{record.mileage}</p>;
+              })}
+            </h2>
+          </section>
+        </Card>
+        <Card id="cardContainer" className="card">
+          <FormInput record={record} setRecord={setRecord} />
+        </Card>
+      </section>
     </div>
   );
 }

@@ -24,8 +24,42 @@ body {
 
 .card {
   width: 300px;
-  background: #ececec;
+  background: #c9a3a3;
   margin-left: auto;
   margin-right: auto;
-  opacity: 0.8;
+  border-style: solid;
+  border-width: 5px;
+  display: flex;
+  margin: auto;
+  justify-content: center;
+}
+
+#cardContainer {
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+  display: flex;
+  justify-content: center;
+}
+
+#section-container {
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+}
+#text-area {
+  margin-bottom: 15px;
+  padding-bottom: 70px;
+}
+
+#calculate-button {
+  margin-bottom: 5px;
+}
+
+#create-card {
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+  display: flex;
+  justify-content: center;
 }

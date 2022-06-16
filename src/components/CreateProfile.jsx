@@ -28,50 +28,54 @@ function CreateProfile() {
 
   return (
     <>
-      <Content style={{ textAlign: "center" }}>
-        <Card className="card">
-          <form onSubmit={handleSubmit}>
-            <h3>Car Alias</h3>
-            <input
-              placeholder="alias"
-              value={alias}
-              onChange={(e) => setAlias(e.target.value)}
-            />
-            <br />
-            <h3>Year</h3>
-            <input
-              placeholder="year"
-              value={year}
-              onChange={(e) => setYear(e.target.value)}
-            />
-            <br />
-            <h3>Make</h3>
-            <input
-              placeholder="make"
-              value={make}
-              onChange={(e) => setMake(e.target.value)}
-            />
-            <br />
-            <h3>Model</h3>
-            <input
-              placeholder="model"
-              value={model}
-              onChange={(e) => setModel(e.target.value)}
-            />
-            <br />
-            <h3>Mileage</h3>
-            <input
-              type="number"
-              placeholder="mileage"
-              value={mileage}
-              onChange={(e) => setMileage(e.target.value)}
-            />
-            <br />
-            <br />
-            <button type="submit">Create user</button>
-          </form>
-        </Card>
-      </Content>
+      <section id="cardContainer">
+        <div id="section-container">
+          <Content id="cardContainer">
+            <Card id="card">
+              <form onSubmit={handleSubmit}>
+                <h3>Car Alias</h3>
+                <input
+                  placeholder="alias"
+                  value={alias}
+                  onChange={(e) => setAlias(e.target.value)}
+                />
+                <br />
+                <h3>Year</h3>
+                <input
+                  placeholder="year"
+                  value={year}
+                  onChange={(e) => setYear(e.target.value)}
+                />
+                <br />
+                <h3>Make</h3>
+                <input
+                  placeholder="make"
+                  value={make}
+                  onChange={(e) => setMake(e.target.value)}
+                />
+                <br />
+                <h3>Model</h3>
+                <input
+                  placeholder="model"
+                  value={model}
+                  onChange={(e) => setModel(e.target.value)}
+                />
+                <br />
+                <h3>Mileage</h3>
+                <input
+                  type="number"
+                  placeholder="mileage"
+                  value={mileage}
+                  onChange={(e) => setMileage(e.target.value)}
+                />
+                <br />
+                <br />
+                <button type="submit">Create user</button>
+              </form>
+            </Card>
+          </Content>
+        </div>
+      </section>
       <br />
     </>
   );
