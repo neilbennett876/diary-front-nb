@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { FormInputContext } from "./context/Context";
 import { Button } from "antd";
 
-function FormInput({ record }) {
+function FormInput({ records }) {
   const {
     mileage,
     setMileage,
@@ -17,14 +17,14 @@ function FormInput({ record }) {
   // const [size, setSize] = useState("large");
 
   function displayMileage() {
-    let testfn = setMPG(((mileage - record[0].mileage) / gallons).toFixed(2));
+    let testfn = setMPG(((mileage - records[0].mileage) / gallons).toFixed(2));
     return testfn;
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const newMileage = { mileage, gallons, mpg, notes };
-    const id = record[0]._id;
+    const id = records[0]._id;
     fetch(`https://cardeets-backend-nb.web.app/diary/${id}`, {
       method: "PATCH",
       headers: {
