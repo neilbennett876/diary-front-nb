@@ -1,5 +1,5 @@
-import { Card, Button, Checkbox, Form, Input } from "antd";
-import { Content, Footer, Header } from "antd/lib/layout/layout";
+// import { Card, Button, Checkbox, Form, Input } from "antd";
+// import { Content, Footer, Header } from "antd/lib/layout/layout";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -14,7 +14,7 @@ function CreateProfile() {
 
   const handleSubmit = (e) => {
     const newUser = { alias, year, make, model, mileage };
-    fetch("http://localhost:3030/diary", {
+    fetch("https://cardeets-backend-nb.web.app/diary", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -22,59 +22,62 @@ function CreateProfile() {
       body: JSON.stringify(newUser),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data))
+      .then((data) => {
+        console.log(data);
+      })
       .catch(console.error);
+    navigate("/");
   };
 
   return (
     <>
       <section id="cardContainer">
-        <div id="section-container">
+        {/* <div id="section-container">
           <Content id="cardContainer">
-            <Card id="card">
-              <form onSubmit={handleSubmit}>
-                <h3>Car Alias</h3>
-                <input
-                  placeholder="alias"
-                  value={alias}
-                  onChange={(e) => setAlias(e.target.value)}
-                />
-                <br />
-                <h3>Year</h3>
-                <input
-                  placeholder="year"
-                  value={year}
-                  onChange={(e) => setYear(e.target.value)}
-                />
-                <br />
-                <h3>Make</h3>
-                <input
-                  placeholder="make"
-                  value={make}
-                  onChange={(e) => setMake(e.target.value)}
-                />
-                <br />
-                <h3>Model</h3>
-                <input
-                  placeholder="model"
-                  value={model}
-                  onChange={(e) => setModel(e.target.value)}
-                />
-                <br />
-                <h3>Mileage</h3>
-                <input
-                  type="number"
-                  placeholder="mileage"
-                  value={mileage}
-                  onChange={(e) => setMileage(e.target.value)}
-                />
-                <br />
-                <br />
-                <button type="submit">Create user</button>
-              </form>
-            </Card>
+            <Card id="card"> */}
+        <form onSubmit={handleSubmit}>
+          <h3>Car Alias</h3>
+          <input
+            placeholder="alias"
+            value={alias}
+            onChange={(e) => setAlias(e.target.value)}
+          />
+          <br />
+          <h3>Year</h3>
+          <input
+            placeholder="year"
+            value={year}
+            onChange={(e) => setYear(e.target.value)}
+          />
+          <br />
+          <h3>Make</h3>
+          <input
+            placeholder="make"
+            value={make}
+            onChange={(e) => setMake(e.target.value)}
+          />
+          <br />
+          <h3>Model</h3>
+          <input
+            placeholder="model"
+            value={model}
+            onChange={(e) => setModel(e.target.value)}
+          />
+          <br />
+          <h3>Mileage</h3>
+          <input
+            type="number"
+            placeholder="mileage"
+            value={mileage}
+            onChange={(e) => setMileage(e.target.value)}
+          />
+          <br />
+          <br />
+          <button type="submit">Create user</button>
+        </form>
+        {/* </Card>
           </Content>
-        </div>
+        </div> */}
       </section>
       <br />
     </>

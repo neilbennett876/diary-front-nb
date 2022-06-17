@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { FormInputContext } from "./context/Context";
 import { Button } from "antd";
 
@@ -14,7 +14,7 @@ function FormInput({ record }) {
     notes,
   } = useContext(FormInputContext);
 
-  const [size, setSize] = useState("large");
+  // const [size, setSize] = useState("large");
 
   function displayMileage() {
     let testfn = setMPG(((mileage - record[0].mileage) / gallons).toFixed(2));
@@ -47,33 +47,32 @@ function FormInput({ record }) {
       ) : (
         <h2>You got {mpg} mpg from your last tank of gas!</h2>
       )}
-      <form onSubmit={handleSubmit}>
-        <br />
-        <input
-          placeholder="Current Mileage"
-          in
-          onChange={(e) => setMileage(Number(e.target.value))}
-        ></input>
-        <br />
-        <input
-          placeholder="Gallons Added"
-          onChange={(e) => setGallons(Number(e.target.value))}
-        ></input>
-        <br />
-        <textarea
-          id="text-area"
-          placeholder="Notes"
-          onChange={(e) => setNotes(e.target.value)}
-        ></textarea>
-        <br />
-        <button id="calculate-button" type="button" onClick={displayMileage}>
-          Calculate
-        </button>
-        <br />
-        <button type="button" onClick={handleSubmit}>
-          Send
-        </button>
-      </form>
+      <br />
+      <input
+        placeholder="Current Mileage"
+        in
+        onChange={(e) => setMileage(Number(e.target.value))}
+      ></input>
+      <br />
+      <br />
+      <input
+        placeholder="Gallons Added"
+        onChange={(e) => setGallons(Number(e.target.value))}
+      ></input>
+      <br />
+      <br />
+      <textarea
+        id="text-area"
+        placeholder="Notes"
+        onChange={(e) => setNotes(e.target.value)}
+      ></textarea>
+      <br />
+      <br />
+      <Button id="calculate-button" onClick={displayMileage}>
+        Calculate
+      </Button>
+      <br />
+      <Button onClick={handleSubmit}>Send</Button>
     </div>
   );
 }
