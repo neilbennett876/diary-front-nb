@@ -1,8 +1,9 @@
 import { Card } from "antd";
 import React, { useState, useEffect } from "react";
-// import { FormItemInputContext } from "antd/lib/form/context";
 import { useNavigate } from "react-router-dom";
 import FormInput from "./FormInput";
+import { FormInputContext } from "./context/Context.js";
+import { useContext } from "react";
 
 function HomeDash() {
   const [records, setRecords] = useState();
@@ -15,6 +16,8 @@ function HomeDash() {
       .then(() => navigate("/"))
       .catch(console.error);
   }, []);
+
+  const { user } = useContext(FormInputContext);
 
   return (
     <div id="cardContainer">
