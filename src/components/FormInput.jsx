@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { FormInputContext } from "./context/Context";
-import { Button } from "antd";
+import { Button, Card, Form } from "antd";
 
 function FormInput({ records }) {
   const {
@@ -41,39 +41,43 @@ function FormInput({ records }) {
   };
 
   return (
-    <div>
+    <Card>
       {!mpg ? (
         <p>Enter your mileage! </p>
       ) : (
         <h2>You got {mpg} mpg from your last tank of gas!</h2>
       )}
       <br />
-      <input
-        placeholder="Current Mileage"
-        in
-        onChange={(e) => setMileage(Number(e.target.value))}
-      ></input>
-      <br />
-      <br />
-      <input
-        placeholder="Gallons Added"
-        onChange={(e) => setGallons(Number(e.target.value))}
-      ></input>
-      <br />
-      <br />
-      <textarea
-        id="text-area"
-        placeholder="Notes"
-        onChange={(e) => setNotes(e.target.value)}
-      ></textarea>
-      <br />
-      <br />
-      <Button id="calculate-button" onClick={displayMileage}>
-        Calculate
-      </Button>
-      <br />
-      <Button onClick={handleSubmit}>Send</Button>
-    </div>
+      <Card>
+        <Form>
+          <input
+            placeholder="Current Mileage"
+            in
+            onChange={(e) => setMileage(Number(e.target.value))}
+          ></input>
+          <br />
+          <br />
+          <input
+            placeholder="Gallons Added"
+            onChange={(e) => setGallons(Number(e.target.value))}
+          ></input>
+          <br />
+          <br />
+          <textarea
+            id="text-area"
+            placeholder="Notes"
+            onChange={(e) => setNotes(e.target.value)}
+          ></textarea>
+          <br />
+          <br />
+          <Button id="calculate-button" onClick={displayMileage}>
+            Calculate
+          </Button>
+          <br />
+          <Button onClick={handleSubmit}>Send</Button>
+        </Form>
+      </Card>
+    </Card>
   );
 }
 

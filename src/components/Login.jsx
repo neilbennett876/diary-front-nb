@@ -1,4 +1,4 @@
-import { Form, Button } from "antd";
+import { Button } from "antd";
 import { initializeApp } from "firebase/app";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import { useContext } from "react";
@@ -21,7 +21,7 @@ function connectAuth() {
 
 function Login() {
   const navigate = useNavigate();
-  const { setUser } = useContext(FormInputContext);
+  const { setUser, setUserID } = useContext(FormInputContext);
 
   function handleGoogleLogin() {
     const auth = connectAuth();
@@ -29,16 +29,13 @@ function Login() {
     signInWithPopup(auth, provider)
       .then((res) => {
         setUser(res.user);
-        navigate("/");
+        setUserID(res.user.uid);
+        navigate("/create");
       })
       .catch(console.error);
   }
 
-  return (
-    // <Form>
-    <Button onClick={handleGoogleLogin}>Google login</Button>
-    // </Form>
-  );
+  return <Button onClick={handleGoogleLogin}>Google login</Button>;
 }
 
 export default Login;

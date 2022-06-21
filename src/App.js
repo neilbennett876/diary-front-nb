@@ -16,9 +16,9 @@ import HeaderNavBar from "./components/Header";
 import LandingPage from "./components/LandingPage";
 
 function App() {
-  // const { user } = useContext(FormInputContext);
+  const { user } = useContext(FormInputContext);
 
-  const [user, setUser] = useState();
+  // const [user, setUser] = useState();
 
   return (
     <FormInputContextProvider>
@@ -27,6 +27,7 @@ function App() {
         <HeaderNavBar />
         <Content>
           <Routes>
+            <Route path="/login" element={<Login />}></Route>
             <Route path="/" element={<HomeDash />} />
             <Route
               path="/create"
@@ -34,7 +35,7 @@ function App() {
               element={<CreateProfile />}
             />
             <Route path="/diary" element={<Diary />} />
-            <Route path="/landing" element={<LandingPage />} />
+            {/* <Route path="/landing" element={<LandingPage />} /> */}
           </Routes>
         </Content>
         <Footer className="footer">Cardeets! ©2022</Footer>

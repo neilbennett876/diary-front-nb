@@ -22,7 +22,7 @@ function HomeDash() {
   return (
     <div id="cardContainer">
       <section id="section-container">
-        <Card id="cardContainer" className="card">
+        <div id="cardContainer" className="card">
           <section id="cardContainer">
             <h2>
               Your car's name:
@@ -37,7 +37,7 @@ function HomeDash() {
               })}
             </h2>
           </section>
-        </Card>
+        </div>
         <Card id="cardContainer" className="card">
           <FormInput records={records} setRecords={setRecords} />
         </Card>

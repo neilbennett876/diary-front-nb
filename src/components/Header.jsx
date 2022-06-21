@@ -1,6 +1,6 @@
 import React from "react";
 import { Menu } from "antd";
-import { HomeOutlined, KeyOutlined, BookOutlined } from "@ant-design/icons";
+import { HomeOutlined, BookOutlined, FileAddOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 
 function HeaderNavBar() {
@@ -16,18 +16,18 @@ function HeaderNavBar() {
           icon={<HomeOutlined style={{ fontSize: "1.8em" }} />}
         ></Menu.Item>
         <Menu.Item
+          key="home"
+          onClick={() => {
+            navigate("/login");
+          }}
+          icon={<FileAddOutlined style={{ fontSize: "1.8em" }} />}
+        ></Menu.Item>
+        <Menu.Item
           key="diary"
           onClick={() => {
             navigate("/diary");
           }}
           icon={<BookOutlined style={{ fontSize: "1.8em" }} />}
-        ></Menu.Item>
-        <Menu.Item
-          key="login/logout"
-          onClick={() => {
-            navigate("/");
-          }}
-          icon={<KeyOutlined style={{ fontSize: "1.8em" }} />}
         ></Menu.Item>
       </Menu>
     </>

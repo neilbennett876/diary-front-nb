@@ -9,6 +9,7 @@ export const FormInputContextProvider = ({ children }) => {
   const [mpg, setMPG] = useState();
   const [notes, setNotes] = useState("");
   const [user, setUser] = useState();
+  const [userID, setUserID] = useState();
 
   const value = {
     mileage,
@@ -21,6 +22,8 @@ export const FormInputContextProvider = ({ children }) => {
     setNotes,
     user,
     setUser,
+    userID,
+    setUserID,
   };
   return <Provider value={value}>{children}</Provider>;
 };

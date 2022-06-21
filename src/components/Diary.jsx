@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Divider, List, Typography } from "antd";
+import { Divider, List } from "antd";
 
 function Diary() {
   const [records, setRecords] = useState();
@@ -27,32 +27,13 @@ function Diary() {
   return (
     <>
       <div>
-        <Divider orientation="left">Previous MPG's</Divider>
+        <Divider orientation="center">Previous MPG's</Divider>
         <List
           size="large"
-          header={<div>Header</div>}
-          footer={<div>Footer</div>}
           bordered
           dataSource={mpgData}
           renderItem={(item) => <List.Item>{item}</List.Item>}
         />
-        {/* <section id="diary">
-          <ul id="diary-child">
-            {records?.map((record) => {
-              return (
-                <li key={record._id}>
-                  {record.mpg.map((mpg) => {
-                    return (
-                      <ul>
-                        <li>{mpg}</li>
-                      </ul>
-                    );
-                  })}
-                </li>
-              );
-            })}
-          </ul>
-        </section> */}
       </div>
     </>
   );
